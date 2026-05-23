@@ -1,32 +1,32 @@
 # 引用与标注规范
 
-`write-ai-article` skill 的引用格式细则。所有产出文章统一遵守。
+`write-ai-article` skill 的引用格式细则。所有产出文章一致遵循。
 
 ## 1. 内联事实引用
 
-任何事实声明（数据、版本、行为、官方说法）都要内联超链接到原始出处：
+事实声明（数据、版本、行为、官方说法）都配内联超链接到原始出处：
 
 ```markdown
 Claude Code 在 [v2.0 的发布说明](https://docs.claude.com/en/release-notes/claude-code) 里引入了 Skills 机制，
 默认从 `~/.claude/skills/` 加载。
 ```
 
-链接文字应该是**信息源的名字**，不是"点这里"或"详见此文"。
+链接文字写成**信息源的名字**，不是"点这里"或"详见此文"。
 
 ## 2. 翻译类文章的原文标注
 
-如果整篇文章是翻译/改写自英文原文，开头第二段就要给出原文出处块：
+整篇文章是翻译/改写自英文原文时，开头第二段给出原文出处块：
 
 ```markdown
 > 原文：[Building effective agents](https://www.anthropic.com/research/building-effective-agents) by Anthropic, 2024-12
 > 译者注：本文在原文基础上补充了 2026 年 Claude Code Skills 的实现细节。
 ```
 
-不要把原文标注藏到文末——读者一开始就该知道这是译稿还是原创。
+把原文标注放在开头，读者一开始就知道这是译稿还是原创。
 
 ## 3. 主观 / 客观 callout
 
-正文默认全部按客观陈述读。需要主观判断时用 callout 显式区分：
+正文默认按客观陈述读。主观判断时用 callout 显式区分：
 
 ```markdown
 > 原文说：Anthropic 推荐每个 skill 单一职责。
@@ -52,19 +52,19 @@ Claude Code 在 [v2.0 的发布说明](https://docs.claude.com/en/release-notes/
 检索增强生成（Retrieval-Augmented Generation, RAG）的核心思路是……
 ```
 
-后续可以只用中文（"RAG"），但首次必须给出原文。模型名（GPT-4、Claude Opus 4.7）、API 名（Files API）、协议名（MCP）直接用英文写。
+后续可以只用中文（"RAG"）。模型名（GPT-4、Claude Opus 4.7）、API 名（Files API）、协议名（MCP）直接用英文写。
 
 ## 5. 版本与日期
 
 涉及版本号、日期、价格、限额时：
-- **写绝对值，不写"最新"**："Gemini 2.5 Flash Image 在 2026-01 GA"，不要写"最新版本的 Gemini"。
+- **写绝对值，不写"最新"**："Gemini 2.5 Flash Image 在 2026-01 GA"，不写"最新版本的 Gemini"。
 - **价格附日期**："$0.039/张（2026-01 标价）"。
 - **限额引官方文档**：链接到 [Gemini pricing page](https://ai.google.dev/gemini-api/docs/pricing)。
 
 ## 6. 截图与示意图归属
 
-- **截图**：截官方界面/文档时不需要署名，但 caption 要写清是从哪个页面截的。
-- **示意图**：自己用 `generate-article-image` skill 生成的图，不需要署名。
+- **截图**：截官方界面/文档时不署名，caption 写清是从哪个页面截的。
+- **示意图**：自己用 `generate-article-image` skill 生成的图，不署名。
 - **借用别人的图**：原作者署名 + 链接，写在 caption 里：
 
   ```markdown
@@ -83,11 +83,11 @@ from anthropic import Anthropic
 \`\`\`
 ```
 
-自己写的最小示例不需要标。
+自己写的最小示例不标。
 
-## 8. 不要做的事
+## 8. 倾向避开的做法
 
-- **不要伪造 URL**。每个链接都要真存在；不确定就先 WebFetch 验一下。
-- **不要把"据说""有人说"当出处**。说不清原作者就不写这句。
-- **不要把 LLM 训练数据当事实**。任何 "GPT-4 知道 X" 类的话需要附带原始文档链接。
-- **不要在引用 callout 里塞链接**。callout 是用来标观点归属的，链接走正文内联。
+- **URL 一律真实可达**，不凭印象编造；不确定时先 WebFetch 验一下。
+- **"据说""有人说"不当出处**。说不清原作者的那句话就不写。
+- **LLM 训练数据不当事实**。任何 "GPT-4 知道 X" 类的话配原始文档链接。
+- **callout 里不塞链接**。callout 用来标观点归属，链接走正文内联。

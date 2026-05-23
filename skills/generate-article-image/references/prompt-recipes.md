@@ -1,10 +1,11 @@
 # Prompt 模板库
 
-5 个常用 prompt 模板。所有模板末尾都要拼上 `image-style-guide.md` 里的通用 style 后缀。
+5 个常用 prompt 模板。所有模板末尾都拼上 `image-style-guide.md` 里的通用 style 后缀。
 
 格式约定：`{占位符}` 是要替换的内容，其余保持。
 
 **默认画幅**：16:9 横版（PC 单图阅读友好）。移动端场景才用 9:16 竖版。
+**默认配色**：Anthropic / Claude desktop 调色——米白底 + 赭橙强调 + 深炭黑文字。避开大红。
 
 ---
 
@@ -14,7 +15,7 @@
 
 ```
 画一张手绘信息卡，16:9 横版。主题是「{主题中文}」。
-卡片底色米白带纸面纹理，标题用手写感无衬线体写"{标题}"放在顶部正中，红黑配色。
+卡片底色米白带纸面纹理，标题用手写感无衬线体写"{标题}"放在顶部正中，赭橙色（terracotta orange）和深炭黑配色。
 正文区分成 {N} 个并列卡片（N ∈ 2..4），左右横向排列：
   - {卡片 1 标题}：{一句话说明}
   - {卡片 2 标题}：{一句话说明}
@@ -23,12 +24,14 @@
 所有文字使用手写感无衬线体（hand-lettered sans-serif），不要毛笔字。
 整体留白充足，无装饰性元素。
 
-Style: hand-drawn cartoon illustration with soft pen strokes, warm beige/off-white
-background with subtle paper grain texture, accent colors in deep red and black,
-generous whitespace, PBR materials with soft natural lighting, hand-lettered
-sans-serif typography for titles and labels (clean letterforms, slight stroke
-irregularity, NO brush calligraphy, NO Chinese ink-brush style). Avoid photorealism,
-neon colors, dense small text.
+Style: hand-drawn cartoon illustration with soft pen strokes, warm cream/beige
+background with subtle paper grain texture, accent color in terracotta burnt
+orange (#CC785C tone, Anthropic / Claude desktop palette), primary text in
+rich charcoal black (#191919), generous whitespace, PBR materials with soft
+natural lighting, hand-lettered sans-serif typography for titles and labels
+(clean letterforms, slight stroke irregularity, NO brush calligraphy, NO
+Chinese ink-brush style). Avoid pure red, avoid neon colors, avoid dense
+small text.
 ```
 
 **默认模型**：`pro`（文字渲染密集，flash 可能糊）。
@@ -48,12 +51,14 @@ neon colors, dense small text.
 组件之间用细线或路径连接表示数据/请求流向。
 diorama 风格，无外框，世界悬浮在米白背景上。
 材质柔和，PBR 质感，自然光照。
+配色：米白底 + 赭橙（terracotta orange）强调 + 深炭黑文字，整体 Anthropic / Claude desktop 调色感。
 标签文字使用手写感无衬线体（hand-lettered sans-serif），不要毛笔字。
 
 Style: 3D miniature isometric perspective (45° top-down), diorama style, frameless
 floating world, soft refined textures, PBR materials, gentle natural lighting,
-warm color palette, generous whitespace, hand-lettered sans-serif for any labels
-(NO brush calligraphy). Avoid photorealism.
+warm cream background with terracotta orange accents and rich charcoal black
+labels, hand-lettered sans-serif for any labels (NO brush calligraphy). Avoid
+pure red, avoid photorealism.
 ```
 
 **默认模型**：`flash`（场景为主，文字少）。
@@ -71,14 +76,15 @@ warm color palette, generous whitespace, hand-lettered sans-serif for any labels
   - {年份 2}：{事件 2}
   - ...
 每个节点用一个手绘小场景表现（不是单纯图标），节点之间用蜿蜒线条连起来。
-顶部用手写感无衬线体写大标题"{标题}"，不要毛笔字。
-米白背景纸面纹理，整体暖色调。
+顶部用手写感无衬线体写大标题"{标题}"，赭橙色，不要毛笔字。
+米白背景纸面纹理，整体暖色调（Anthropic / Claude desktop 调色：米白 + 赭橙 + 深炭黑）。
 
-Style: hand-drawn cartoon illustration, 16:9 horizontal timeline, soft pen strokes,
-warm beige background with paper grain, isometric mini-scenes at each timeline node,
-flowing connecting lines, hand-lettered sans-serif for main title and year labels
-(clean letterforms, slight irregularity, NO brush calligraphy), generous whitespace
-between nodes. Avoid photorealism.
+Style: hand-drawn cartoon illustration, 16:9 horizontal timeline, soft pen
+strokes, warm cream background with paper grain, isometric mini-scenes at each
+timeline node, flowing connecting lines in terracotta orange, hand-lettered
+sans-serif for main title and year labels (clean letterforms, slight irregularity,
+NO brush calligraphy), generous whitespace between nodes. Palette: cream +
+terracotta orange + rich charcoal black, NO pure red. Avoid photorealism.
 ```
 
 **默认模型**：`pro`（年份/节点文字要清晰）。
@@ -96,13 +102,15 @@ between nodes. Avoid photorealism.
   - 步骤 2：{动作} —— 配小图标
   - ...
 步骤之间用粗手绘箭头连接，箭头旁可有 1–3 个字的说明。
-顶部用手写感无衬线体写标题，不要毛笔字。米白背景纸面纹理。
+顶部用手写感无衬线体写标题，赭橙色，不要毛笔字。米白背景纸面纹理。
+配色 Anthropic / Claude desktop 风：米白底 + 赭橙强调 + 深炭黑文字。
 
 Style: hand-drawn cartoon flow diagram, 16:9 horizontal, soft pen strokes,
-beige paper texture background, red+black accent for arrows and labels,
-rounded card shapes with thin outlines, hand-lettered sans-serif title at top
-(clean letterforms, slight irregularity, NO brush calligraphy, NO Chinese
-ink-brush style), generous whitespace. Avoid sharp digital geometry.
+cream paper texture background, terracotta orange accent for arrows and key
+labels, rich charcoal black for text and outlines, rounded card shapes with
+thin outlines, hand-lettered sans-serif title at top (clean letterforms, slight
+irregularity, NO brush calligraphy, NO Chinese ink-brush style), generous
+whitespace. Avoid sharp digital geometry, avoid pure red, avoid neon colors.
 ```
 
 **默认模型**：`pro`。
@@ -118,13 +126,13 @@ ink-brush style), generous whitespace. Avoid sharp digital geometry.
 用一个生动的类比表现「{抽象概念}」：{类比场景描述，1–2 句}。
 画面只有一个主角（人物或拟人化对象），居中，周围留白充足。
 主角神态生动，姿势能传达概念的核心动作。
-右下方留出区域放一句中文 caption："{一句话 caption}"，用手写感无衬线体，不要毛笔字。
+右下方留出区域放一句中文 caption："{一句话 caption}"，用手写感无衬线体，赭橙色 + 深炭黑，不要毛笔字。
 
 Style: hand-drawn cartoon illustration, single centered subject, 16:9 horizontal,
-warm beige background with subtle paper texture, soft pen strokes,
-expressive character pose, generous whitespace, hand-lettered sans-serif Chinese
-caption (clean letterforms, NO brush calligraphy). Avoid photorealism, avoid
-complex backgrounds.
+warm cream background with subtle paper texture, soft pen strokes, expressive
+character pose, generous whitespace, hand-lettered sans-serif Chinese caption
+in terracotta orange + rich charcoal black (NO brush calligraphy). Avoid pure
+red, avoid photorealism, avoid complex backgrounds.
 ```
 
 **默认模型**：`flash`（人物 + 少量文字，flash 够用）。
@@ -142,7 +150,7 @@ complex backgrounds.
 
 - **文字总是不清晰**：换 `--model pro`。
 - **太"AI 味"（光滑塑料感）**：在 prompt 里加 `with visible pen strokes, hand-drawn imperfections, slightly uneven lines`。
-- **颜色太亮**：加 `muted earth tones, no saturated colors`。
+- **颜色变成大红色**：在 prompt 多个位置强调 `terracotta orange / burnt orange (#CC785C tone), NO pure red, NO saturated red`。pro 模型对反向提示更敏感。
 - **构图太满**：加 `at least 30% empty space, minimalist composition`。
-- **模型仍然画出毛笔字**：在 prompt 多个位置（标题描述、style 段、负面提示）都强调 `hand-lettered sans-serif, NOT brush calligraphy`。pro 模型对反向提示更敏感。
+- **模型仍然画出毛笔字**：在 prompt 多个位置（标题描述、style 段、负面提示）都强调 `hand-lettered sans-serif, NOT brush calligraphy`。
 - **被安全过滤拦**：去掉真实人名/品牌名/可能敏感的主题词。重试前确认换了表述。
