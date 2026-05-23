@@ -28,7 +28,6 @@ These skills follow [Anthropic's skill specification](https://docs.claude.com/en
 
 | Skill | What it does |
 |---|---|
-| [`hello-skill`](skills/hello-skill/) | Sanity check — prints a greeting to verify the skills loader is wired up. |
 | [`write-ai-article`](skills/write-ai-article/) | Generate a Chinese-language AI technical article following the in-repo style guide (plain narrative, inline citations, short sentences, diagrams at cognitive-load peaks). Ready to drop into a book/blog repo. |
 | [`generate-article-image`](skills/generate-article-image/) | Generate hand-drawn / isometric infographic illustrations via the Gemini image API ("Nano Banana"). Pairs with `write-ai-article`. Requires `GEMINI_API_KEY`. |
 
