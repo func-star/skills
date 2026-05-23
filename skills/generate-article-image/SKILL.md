@@ -1,6 +1,6 @@
 ---
 name: generate-article-image
-description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成 sketch-notes 风的文章配图（默认 16:9 横版、米色纸面、粗黑体（heavy sans-serif）标题 + 黑色细笔涂鸦装饰、Anthropic 赭橙调色板），保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
+description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成 sketch-notes 风的文章配图（默认 16:9 横版、米色纸面、手写感无衬线体（hand-lettered sans-serif）标题 + 黑色细笔涂鸦装饰、Anthropic 赭橙调色板），保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
 ---
 
 ## Goal

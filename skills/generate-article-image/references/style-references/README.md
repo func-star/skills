@@ -29,20 +29,21 @@
 
 ## 中文字体的强约束
 
-宝玉的样图原图都是英文标题，**英文样图用粗衬线**——但**中文场景下我们采用粗黑体而不是粗宋体**。原因：中文宋体衬线在 Gemini 渲染下容易飘成楷体或书法变体；中文黑体的方头方尾在视觉上和英文粗衬线一样"有力量"，且不容易飘。
+字体规范要在两个极端之间守住中间地带：
 
-当前强制规范（中文场景）：
+- **一端要避免**：飘到毛笔字 / 楷体 / 行楷 / 草书 / 书法 / 中文 ink-brush / 宋体衬线——Gemini 在中文上最容易跑到这些方向
+- **另一端要避免**：死板成 Heavy 工业感黑体（思源黑体 Heavy / 苹方 Heavy 那种"广告牌"质感）——失去 sketchnote 的手作温度
+- **目标中间地带**：**手写感无衬线体（hand-lettered sans-serif）**——字型清晰、轮廓规整，但笔画有轻微手作不规则，像设计师用粗水笔（chisel-tip marker）手写信息图标题。字重 Bold / Semi-bold
 
-- **字形**：**粗黑体**（heavy sans-serif），笔画粗细均匀、方头方尾、**无衬线**、结构端正、字怀紧凑
-- **中文等价字体名**：思源黑体 Heavy（Source Han Sans Heavy）/ Noto Sans CJK Black / PingFang SC Heavy / 苹方粗 / 阿里巴巴普惠体 Heavy / HarmonyOS Sans Black
-- **英文等价字体名**：Inter Black / Helvetica Black / Source Sans 3 Black
-- **明确避开**：宋体（serif）、仿宋、楷体、行楷、毛笔锋、书法字体、中文 ink-brush
+当前强制规范：
+
+- **字形**：手写感无衬线体（hand-lettered sans-serif），无衬线，字型清晰、有手作温度
+- **字重**：Bold / Semi-bold（不要 Heavy）
+- **中文呈现参考**：思源黑体 Bold + 手作不规则感（视觉描述，非具体字体名）
+- **英文呈现参考**：Caveat Brush / Patrick Hand / Architects Daughter 等 hand-lettered 字体的氛围
+- **明确避开**：宋体（serif）、仿宋、楷体、行楷、毛笔锋、书法字体、中文 ink-brush、Heavy 工业感死板黑体
 - **装饰**：标题周围允许 sketchnote 风的黑色细笔涂鸦元素——星星 / 箭头 / 螺旋 / 强调圈
 - **配色**：保留 Anthropic 主调（米白底 + 赭橙强调 + 深炭黑文字），sketchnote 辅色（莫兰迪粉 / 薄荷绿 / 暖琥珀 / 雾蓝灰）只用于次级装饰，不抢主标题
-
-### 实际样本参考
-
-用户截图的"图增强 RAG 链路"标题（赭橙色"图增强" + 黑色"RAG"+ 赭橙"链路"，字体为粗黑体）是这个 skill 字体规范的视觉锚点。所有 prompt 里的字体描述要朝这种效果走。
 
 ## 怎么挂到 prompt 里
 
