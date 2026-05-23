@@ -1,6 +1,6 @@
 ---
 name: generate-article-image
-description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成手绘信息图风格的文章配图（9:16 竖版、米色纸面、毛笔标题、等距 3D 微缩场景），保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
+description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成手绘信息图风格的文章配图（默认 16:9 横版、米色纸面、手写感无衬线体标题、等距 3D 微缩场景），保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
 ---
 
 ## Goal
@@ -65,7 +65,7 @@ GEMINI_API_KEY="$(cat ~/.gemini-api-key)" \
 <中文核心描述>
 
 Style: <英文风格后缀，来自 image-style-guide.md>
-Aspect ratio: 9:16 (默认) / 16:9 / 1:1
+Aspect ratio: 16:9 (默认) / 9:16 / 1:1
 ```
 
 中文写"画什么"，英文写"怎么画"——Gemini 对英文 style descriptor 响应更稳。
@@ -75,7 +75,7 @@ Aspect ratio: 9:16 (默认) / 16:9 / 1:1
 | 模型 | 用什么场景 | 价格 |
 |---|---|---|
 | `gemini-2.5-flash-image` (Nano Banana) | 默认；速度快，免费额度 50 张/天 | 付费 $0.039/张 |
-| `gemini-3-pro-image-preview` (Nano Banana Pro) | 文字渲染多的信息图；需要锐利毛笔字 | 仅付费 |
+| `gemini-3-pro-image-preview` (Nano Banana Pro) | 文字渲染多的信息图；需要锐利字体 | 仅付费 |
 
 用户没指定时用 flash。文章封面或文字密集的信息图用 pro。
 
@@ -86,7 +86,7 @@ python ${SKILL_DIR}/scripts/generate_image.py \
   --prompt "<完整 prompt>" \
   --out "<article-dir>/assets/fig-N.png" \
   --model flash \
-  --aspect 9:16
+  --aspect 16:9
 ```
 
 `--model` 接受 `flash` / `pro`（脚本内部映射到完整模型名）。
@@ -121,5 +121,5 @@ python ${SKILL_DIR}/scripts/generate_image.py \
 
 - **SynthID 水印**：所有 Gemini 生成的图都带不可见水印，无法去除。这是 Google 的策略，不是 bug，给用户说一次即可。
 - **不会画好的东西**：写实人脸（容易拙）、特定品牌 logo（容易侵权且过滤）、密集小字（flash 模型会糊，pro 模型也只是相对好）。这些场景提示用户用其他方式（截图 / 手绘 / 设计师介入）。
-- **横版 vs 竖版**：默认 9:16 竖版（适合移动端单图阅读）。文章封面图用 16:9 横版，正文里的解释图用 9:16 竖版。
+- **横版 vs 竖版**：默认 16:9 横版（PC / 大屏单图阅读最舒适，是当前主要查看场景）。移动端单图场景才用 9:16 竖版。脚本 `--aspect` 不传时按 16:9。
 - 这个 skill 不负责把图回写到 `article.md`——它只产出图。回写 markdown 的工作交给用户或 `write-ai-article` skill 的下一轮。

@@ -2,7 +2,7 @@
 """Generate an article illustration via the Gemini image API.
 
 Usage:
-    python generate_image.py --prompt "..." --out path/to/fig.png [--model flash|pro] [--aspect 9:16|16:9|1:1]
+    python generate_image.py --prompt "..." --out path/to/fig.png [--model flash|pro] [--aspect 16:9|9:16|1:1]
 
 Env:
     GEMINI_API_KEY (required)  Get one at https://aistudio.google.com/app/apikey
@@ -34,8 +34,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--out", required=True, help="Output PNG path.")
     p.add_argument("--model", default="flash", choices=list(MODEL_ALIASES.keys()),
                    help="flash = gemini-2.5-flash-image (free 50/day), pro = gemini-3-pro-image-preview (paid only).")
-    p.add_argument("--aspect", default="9:16", choices=["9:16", "16:9", "1:1"],
-                   help="Aspect ratio. Default 9:16 (vertical, mobile-friendly).")
+    p.add_argument("--aspect", default="16:9", choices=["16:9", "9:16", "1:1"],
+                   help="Aspect ratio. Default 16:9 (horizontal, PC-friendly).")
     return p.parse_args()
 
 
