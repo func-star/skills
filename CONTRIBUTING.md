@@ -23,13 +23,19 @@ Before opening a PR, confirm:
 
 ## Testing
 
-There is no CI for skill behavior. Test locally against at least one host agent:
+There is no CI for skill behavior. Test locally against at least one host agent.
+
+**While developing inside this repo**, symlink so edits are live:
 
 ```bash
-# Example: load into Claude Code's user-level skills dir
 ln -s "$PWD/skills/<skill-name>" ~/.claude/skills/<skill-name>
-
 # Open a fresh session and invoke the skill (e.g. /<skill-name> in Claude Code)
+```
+
+**For a one-shot trial of a published skill** (no editing), use the install paths documented in [README.md](README.md#installation) — `npx tiged` is the fastest for arbitrary targets:
+
+```bash
+npx tiged func-star/skills/skills/<skill-name> /tmp/test-<skill-name>
 ```
 
 For other agents (Antigravity, Cursor, …) follow their docs for loading `SKILL.md`-format skills.

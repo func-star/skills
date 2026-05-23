@@ -10,9 +10,28 @@ description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成手绘信
 ## Preconditions
 
 - `GEMINI_API_KEY` 环境变量已设置（从 [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) 获取）。
-- Python 3.10+ 可用。
+- Python 3.10+ 可用，且 `google-genai` SDK 在调用脚本的 Python 环境里可导入。
 - 用户已给出图描述（中文），或者 `article.md` 里有 `<!-- gen-hint: ... -->` 注释。
 - 目标 `<article-dir>/assets/` 目录存在或可创建。
+
+### Python 环境推荐（解决 PEP 668）
+
+macOS Homebrew Python 默认拒绝 `pip install`（PEP 668 "externally managed"）。规范做法是用专用 venv：
+
+```bash
+python3 -m venv ~/.venvs/gemini-image
+~/.venvs/gemini-image/bin/pip install google-genai
+```
+
+之后调用脚本时显式用 venv 的 python：
+
+```bash
+GEMINI_API_KEY="$(cat ~/.gemini-api-key)" \
+  ~/.venvs/gemini-image/bin/python ${SKILL_DIR}/scripts/generate_image.py \
+  --prompt "..." --out "..."
+```
+
+如果系统 Python 不受 PEP 668 限制（Linux 发行版自带、conda、uv 管理的 Python 等），直接 `pip install google-genai` 即可，无需 venv。**永远不要**用 `--break-system-packages` 绕过——会污染 Homebrew 的 Python 环境。
 
 ## Steps
 

@@ -59,9 +59,18 @@ def import_sdk():
         return genai, types
     except ImportError:
         sys.stderr.write(
-            "error: google-genai SDK is not installed.\n"
-            "  Install with: pip install google-genai\n"
-            "  Then re-run this command.\n"
+            "error: google-genai SDK is not importable from this Python.\n"
+            "\n"
+            "  Recommended (PEP 668 / Homebrew Python safe):\n"
+            "    python3 -m venv ~/.venvs/gemini-image\n"
+            "    ~/.venvs/gemini-image/bin/pip install google-genai\n"
+            "    # then invoke this script via that venv's python:\n"
+            "    ~/.venvs/gemini-image/bin/python " + sys.argv[0] + " ...\n"
+            "\n"
+            "  Plain (if your Python is not externally-managed):\n"
+            "    pip install google-genai\n"
+            "\n"
+            "  Do NOT use --break-system-packages on Homebrew Python.\n"
         )
         sys.exit(4)
 
