@@ -1,6 +1,6 @@
 ---
 name: hello-skill
-description: A minimal example skill that prints a greeting and demonstrates the SKILL.md format. Invoke when you want to verify your skills directory is wired up correctly.
+description: A minimal example skill that prints a greeting and demonstrates the SKILL.md format. Invoke when you want to verify your agent's skills directory is wired up correctly.
 ---
 
 ## Goal
@@ -13,7 +13,7 @@ Print a friendly greeting and confirm the skill loader is working.
 
 ## Steps
 
-1. Output a single line: `Hello from hello-skill — your Claude Code skills directory is wired up correctly.`
+1. Output a single line: `Hello from hello-skill — your skills directory is wired up correctly.`
 2. Report the current working directory to the user.
 
 ## Success criteria

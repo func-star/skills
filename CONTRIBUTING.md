@@ -23,18 +23,20 @@ Before opening a PR, confirm:
 
 ## Testing
 
-There is no CI for skill behavior. Test locally:
+There is no CI for skill behavior. Test locally against at least one host agent:
 
 ```bash
-# Symlink into Claude Code's user-level skills dir
+# Example: load into Claude Code's user-level skills dir
 ln -s "$PWD/skills/<skill-name>" ~/.claude/skills/<skill-name>
 
-# Open a fresh Claude Code session and invoke
-# /<skill-name>
+# Open a fresh session and invoke the skill (e.g. /<skill-name> in Claude Code)
 ```
+
+For other agents (Antigravity, Cursor, …) follow their docs for loading `SKILL.md`-format skills.
 
 In your PR description, include:
 
+- Which host agent(s) you tested in.
 - The exact invocations you tested.
 - The expected vs observed behavior.
 - Any edge cases you confirmed handle correctly.
@@ -66,4 +68,4 @@ For broken or misbehaving skills, open an issue with:
 1. Skill name.
 2. Exact invocation.
 3. Expected vs actual behavior.
-4. Claude Code version (`claude --version`).
+4. Host agent and version (e.g. `claude --version` for Claude Code).

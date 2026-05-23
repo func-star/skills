@@ -1,8 +1,8 @@
-# claude-skills
+# skills
 
-A curated collection of [Claude Code](https://docs.claude.com/en/docs/claude-code) skills.
+A curated collection of **agent skills** — reusable, model-invokable capabilities packaged as a directory with a `SKILL.md` file.
 
-Skills are reusable, model-invokable capabilities packaged as a directory with a `SKILL.md` file. Each skill defines a focused workflow that Claude can trigger via `/skill-name`.
+These skills follow [Anthropic's skill specification](https://docs.claude.com/en/docs/claude-code), which is also adopted by other AI coding agents (Antigravity, Cursor, and others). The same skill directory can be consumed by any compatible agent — just point the agent at it.
 
 ## Repository layout
 
@@ -12,7 +12,7 @@ Skills are reusable, model-invokable capabilities packaged as a directory with a
 │   └── <skill-name>/
 │       ├── SKILL.md         # Skill frontmatter + instructions (required)
 │       ├── scripts/         # Optional: executable helpers the skill calls
-│       └── references/      # Optional: long-form docs the skill reads on demand
+│       └── references/      # Optional: long-form docs loaded on demand
 ├── templates/
 │   └── SKILL_TEMPLATE.md    # Starting point for new skills
 ├── docs/
@@ -26,17 +26,18 @@ Skills are reusable, model-invokable capabilities packaged as a directory with a
 
 ## Installation
 
-To use a skill locally, symlink or copy it into your Claude Code skills directory:
+To use a skill, copy or symlink its directory into your agent's skills location.
 
+**Claude Code:**
 ```bash
 # User-level (available across all projects)
 ln -s "$PWD/skills/<skill-name>" ~/.claude/skills/<skill-name>
 
-# Project-level (available only in the current repo)
+# Project-level (current repo only)
 ln -s "$PWD/skills/<skill-name>" .claude/skills/<skill-name>
 ```
 
-Then invoke it in Claude Code with `/<skill-name>`.
+**Other agents (Antigravity, Cursor, etc.):** follow your agent's documentation for where it loads skills from — the `SKILL.md` format is the same. If your agent expects a single root `skills/` directory, point it at this repo's `skills/` folder directly.
 
 ## Creating a new skill
 

@@ -2,6 +2,8 @@
 
 This document defines the conventions every skill in this repository must follow.
 
+Skills here follow [Anthropic's skill specification](https://docs.claude.com/en/docs/claude-code) — the same format consumed by Claude Code, Antigravity, Cursor, and other compatible agents. Nothing in this spec is agent-specific; if a rule below references Claude Code as an example, it applies equally to any agent that loads `SKILL.md`-format skills.
+
 ## 1. Directory layout
 
 Each skill is a directory under `skills/` whose name matches the skill's invocation slug:
@@ -15,7 +17,7 @@ skills/<skill-name>/
 ```
 
 - `<skill-name>` must be **kebab-case**, lowercase, ASCII-only, and unique within the repo.
-- The invocation is `/<skill-name>` in Claude Code.
+- The invocation slug is `<skill-name>`. How the user triggers it depends on the host agent (e.g. `/<skill-name>` in Claude Code).
 
 ## 2. `SKILL.md` format
 
@@ -86,12 +88,12 @@ If a skill becomes obsolete, move it to `skills/_archive/` rather than deleting 
 
 There is no automated test harness for skills. Before merging:
 
-1. Symlink the skill into `~/.claude/skills/<skill-name>` locally.
-2. Start a fresh Claude Code session.
-3. Invoke `/<skill-name>` and verify it does what its description claims.
+1. Load the skill into at least one host agent (e.g. symlink into `~/.claude/skills/<skill-name>` for Claude Code).
+2. Start a fresh session in that agent.
+3. Invoke the skill and verify it does what its description claims.
 4. Try at least one **negative case** — a situation where the skill should refuse or abort.
 
-Document the test scenarios in the PR description.
+Document the test scenarios — and which agent(s) you tested against — in the PR description.
 
 ## 7. Style conventions
 

@@ -49,6 +49,6 @@ echo "Created $TARGET_FILE"
 echo
 echo "Next steps:"
 echo "  1. Edit $TARGET_FILE — fill in the description and steps."
-echo "  2. Test locally:"
+echo "  2. Load into a host agent to test. Example for Claude Code:"
 echo "       ln -s \"$TARGET_DIR\" ~/.claude/skills/$SKILL_NAME"
-echo "  3. Invoke in Claude Code: /$SKILL_NAME"
+echo "  3. Invoke the skill in your agent (e.g. /$SKILL_NAME in Claude Code)."
