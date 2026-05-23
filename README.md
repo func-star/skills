@@ -33,18 +33,59 @@ These skills follow [Anthropic's skill specification](https://docs.claude.com/en
 
 ## Installation
 
-To use a skill, copy or symlink its directory into your agent's skills location.
+Three install paths, pick the one that matches your agent.
 
-**Claude Code:**
+### Option A — `npx skill` (CodeBuddy, one-shot)
+
+The community [`skill`](https://www.npmjs.com/package/skill) CLI fetches a skill folder from GitHub and writes it into `.codebuddy/skills/<name>` of the current directory. It hardcodes its source to `vercel-labs/agent-skills`; point it at this repo with the `SKILL_BASE_URL` env var:
+
 ```bash
-# User-level (available across all projects)
-ln -s "$PWD/skills/<skill-name>" ~/.claude/skills/<skill-name>
-
-# Project-level (current repo only)
-ln -s "$PWD/skills/<skill-name>" .claude/skills/<skill-name>
+SKILL_BASE_URL=https://github.com/func-star/skills/tree/main \
+  npx skill skills/write-ai-article
 ```
 
-**Other agents (Antigravity, Cursor, etc.):** follow your agent's documentation for where it loads skills from — the `SKILL.md` format is the same. If your agent expects a single root `skills/` directory, point it at this repo's `skills/` folder directly.
+Note the syntax: `npx skill skills/<name>` — there is no `add` subcommand. To make it permanent, put the export in your shell rc:
+
+```bash
+export SKILL_BASE_URL=https://github.com/func-star/skills/tree/main
+# then just:
+npx skill skills/generate-article-image
+```
+
+Target is fixed at `.codebuddy/skills/`, so this path is most useful for CodeBuddy users. For Claude Code / Cursor / Antigravity, see Option B.
+
+### Option B — `npx tiged` (any agent, custom target)
+
+[`tiged`](https://github.com/tiged/tiged) is a generic GitHub subtree fetcher with no opinions about the target directory:
+
+```bash
+# Claude Code — user-level (all projects see the skill)
+npx tiged func-star/skills/skills/write-ai-article ~/.claude/skills/write-ai-article
+
+# Claude Code — project-level (current repo only)
+npx tiged func-star/skills/skills/write-ai-article .claude/skills/write-ai-article
+
+# Any other agent — substitute your agent's skills directory
+npx tiged func-star/skills/skills/write-ai-article <your-agent-skills-dir>/write-ai-article
+```
+
+This is the recommended path for non-CodeBuddy users.
+
+### Option C — clone + symlink (track upstream)
+
+If you want to pull updates as the repo evolves:
+
+```bash
+git clone git@github.com:func-star/skills.git ~/repos/skills
+ln -s ~/repos/skills/skills/write-ai-article    ~/.claude/skills/write-ai-article
+ln -s ~/repos/skills/skills/generate-article-image ~/.claude/skills/generate-article-image
+```
+
+A future `git pull` in `~/repos/skills` updates every installed skill at once.
+
+### Post-install: scripts and the executable bit
+
+GitHub raw downloads do not preserve the executable bit. Skills that bundle `scripts/` (e.g. `generate-article-image`) work fine because every `SKILL.md` here invokes its helpers via `python <script>` rather than `./<script>`. If you ever want to call a helper directly, run `chmod +x <skill-dir>/scripts/*.py` once after install.
 
 ## Creating a new skill
 
