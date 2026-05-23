@@ -1,6 +1,6 @@
 # 中文 AI 技术文章风格规范
 
-这是 `write-ai-article` skill 写每一篇文章前必读的硬约束。风格综合自 [@dotey 宝玉](https://x.com/dotey)、[Simon Willison](https://simonwillison.net/)、[Andrej Karpathy](https://karpathy.ai/)、[Lilian Weng](https://lilianweng.github.io/)、[Jay Alammar](https://jalammar.github.io/)、[Chip Huyen](https://huyenchip.com/)。
+这是 `write-ai-article` skill 写每一篇文章前必读的硬约束。
 
 ## 十条硬规则
 
@@ -57,18 +57,18 @@ Anthropic 在 [2025 年 11 月的更新](https://docs.claude.com/en/release-note
 - 关键行加注释解释**为什么**这么写，不是这么写**做了什么**。
 - 涉及 API key、绝对路径、个人邮箱时用占位符（`$GEMINI_API_KEY` / `<your-path>`）。
 
-### 7. 语气：65% 技术精确 + 35% 可读
+### 7. 现象先于形式化，权衡必带反例
 
-技术细节用准确术语（带英文原文），但解释起来用日常说法。不要用"赋能""抓手""链路""闭环"这类商业八股。
-
-参考宝玉的语气：把英文论文里的硬骨头嚼软，但事实层面**不糊**——技术名词、版本号、参数都写准。
+- **现象先于形式化**：解释一个概念时，先描述读者能感知的现象，再给定义/公式/伪代码。
+- **权衡必带反例**：说一个方案好的时候，必须同时说它在什么场景下不好。单方面唱赞歌一律改写。
+- **语气配比**：约 65% 技术精确 + 35% 通俗解释。技术名词、版本号、参数写准；解释这些名词时用日常说法。不用"赋能""抓手""链路""闭环"这类商业八股。
 
 ### 8. 主观与客观分开标
 
 正文默认是客观陈述。需要表达个人判断或推测时，用引用 callout 显式标出：
 
 ```markdown
-> 原文说：……（事实，原作者观点）
+> 原文说：……（事实/原作者观点）
 > 我的看法：……（作者本人观点）
 > 分析：……（作者基于事实的推理，非纯主观）
 ```
@@ -81,7 +81,7 @@ Anthropic 在 [2025 年 11 月的更新](https://docs.claude.com/en/release-note
 
 ```markdown
 - [Building effective agents](https://www.anthropic.com/research/building-effective-agents) —— agent 设计的第一性原理，写文前先读
-- [Simon Willison: Agentic patterns](https://simonw.substack.com/) —— 大量真实工程案例
+- [...](url) —— ……
 ```
 
 不堆链接、不放没读过的、不超过 5 条。
@@ -104,6 +104,7 @@ Anthropic 在 [2025 年 11 月的更新](https://docs.claude.com/en/release-note
 | 自明腔 | "众所周知 LLM 有上下文窗口限制" | "GPT-4 的上下文窗口是 [128K tokens](url)" |
 | 长散文块 | 连续 5 段没小标题 | 拆子章节或插图位换气 |
 | 商业八股 | "赋能开发者构建闭环" | 写人话 |
+| 单方面赞歌 | "这个框架完美解决了所有问题" | 加一句它在什么场景下不适用 |
 
 ## 自检清单（落盘前过一遍）
 
@@ -116,3 +117,4 @@ Anthropic 在 [2025 年 11 月的更新](https://docs.claude.com/en/release-note
 - [ ] 文末有"延伸阅读"，3–5 条。
 - [ ] 字数落在目标桶内（短文 <800 / 深度 1500–2500）。
 - [ ] 整篇没有"近年来""众所周知""赋能""抓手"等反模式词。
+- [ ] 提到的每个方案都附带 trade-off 或适用边界。

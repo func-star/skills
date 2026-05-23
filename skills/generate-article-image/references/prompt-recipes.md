@@ -1,6 +1,6 @@
 # Prompt 模板库
 
-5 个常用 prompt 模板。所有模板末尾都要拼上 `baoyu-style.md` 里的通用 style 后缀。
+5 个常用 prompt 模板。所有模板末尾都要拼上 `image-style-guide.md` 里的通用 style 后缀。
 
 格式约定：`{占位符}` 是要替换的内容，其余保持。
 
@@ -125,7 +125,7 @@ at the bottom. Avoid photorealism, avoid complex backgrounds.
 
 1. 从图位的 `gen-hint` 看图类型 → 选对应 recipe。
 2. 替换占位符 → 生成完整中文描述。
-3. 拼上 `baoyu-style.md` 的通用 style 后缀（如果 recipe 自己的 style 段已经覆盖，可省）。
+3. 拼上 `image-style-guide.md` 的通用 style 后缀（如果 recipe 自己的 style 段已经覆盖，可省）。
 4. 调 `scripts/generate_image.py`。
 
 ## 调优技巧

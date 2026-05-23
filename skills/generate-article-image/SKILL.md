@@ -1,11 +1,11 @@
 ---
 name: generate-article-image
-description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成宝玉 (@dotey) 风格的文章配图，保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
+description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成手绘信息图风格的文章配图（9:16 竖版、米色纸面、毛笔标题、等距 3D 微缩场景），保存到文章目录的 assets/ 下。配合 write-ai-article 使用：当 article.md 里有 ![FIG-N](assets/fig-N.png) 占位与 gen-hint 注释时调用。需要 GEMINI_API_KEY 环境变量。
 ---
 
 ## Goal
 
-生成一张符合宝玉风格的文章配图，保存到 `<article-dir>/assets/fig-N.png`。
+生成一张符合本仓库图像风格规范的文章配图，保存到 `<article-dir>/assets/fig-N.png`。
 
 ## Preconditions
 
@@ -36,16 +36,16 @@ description: 用 Google Gemini 图像 API ("Nano Banana" 家族) 生成宝玉 (@
 
 不确定就用 `infographic-card`，最通用。
 
-### 3. 加宝玉风格指纹
+### 3. 加风格指纹
 
-读 `${SKILL_DIR}/references/baoyu-style.md`，把 8 项风格指纹拼到 prompt 末尾。
+读 `${SKILL_DIR}/references/image-style-guide.md`，把 8 项风格指纹拼到 prompt 末尾。
 
 最终 prompt 结构：
 
 ```
 <中文核心描述>
 
-Style: <英文风格后缀，来自 baoyu-style.md>
+Style: <英文风格后缀，来自 image-style-guide.md>
 Aspect ratio: 9:16 (默认) / 16:9 / 1:1
 ```
 
@@ -102,5 +102,5 @@ python ${SKILL_DIR}/scripts/generate_image.py \
 
 - **SynthID 水印**：所有 Gemini 生成的图都带不可见水印，无法去除。这是 Google 的策略，不是 bug，给用户说一次即可。
 - **不会画好的东西**：写实人脸（容易拙）、特定品牌 logo（容易侵权且过滤）、密集小字（flash 模型会糊，pro 模型也只是相对好）。这些场景提示用户用其他方式（截图 / 手绘 / 设计师介入）。
-- **横版 vs 竖版**：宝玉的默认是 9:16 竖版，因为他主要发 X 移动端阅读。文章封面图建议用 16:9 横版，正文里的解释图用 9:16 竖版。
+- **横版 vs 竖版**：默认 9:16 竖版（适合移动端单图阅读）。文章封面图用 16:9 横版，正文里的解释图用 9:16 竖版。
 - 这个 skill 不负责把图回写到 `article.md`——它只产出图。回写 markdown 的工作交给用户或 `write-ai-article` skill 的下一轮。

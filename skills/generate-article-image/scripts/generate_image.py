@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--model", default="flash", choices=list(MODEL_ALIASES.keys()),
                    help="flash = gemini-2.5-flash-image (free 50/day), pro = gemini-3-pro-image-preview (paid only).")
     p.add_argument("--aspect", default="9:16", choices=["9:16", "16:9", "1:1"],
-                   help="Aspect ratio. Default 9:16 to match 宝玉's house style.")
+                   help="Aspect ratio. Default 9:16 (vertical, mobile-friendly).")
     return p.parse_args()
 
 

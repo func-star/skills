@@ -68,8 +68,8 @@ Claude Code 在 [v2.0 的发布说明](https://docs.claude.com/en/release-notes/
 - **借用别人的图**：原作者署名 + 链接，写在 caption 里：
 
   ```markdown
-  ![Transformer 结构图](assets/fig-2.png)
-  > 图源：[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) by Jay Alammar
+  ![<图主题>](assets/fig-2.png)
+  > 图源：[<原文标题>](<原文 URL>) by <原作者>，<发布日期>
   ```
 
 ## 7. 代码出处
